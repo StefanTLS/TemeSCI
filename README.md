@@ -1,0 +1,2 @@
+# TemeSCI
+Tudurean Stefan Laurentiu
