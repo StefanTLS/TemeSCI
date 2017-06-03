@@ -1,63 +1,41 @@
 package ro.sci.carrental.repository;
+
 import ro.sci.carrental.domain.Car;
-import ro.sci.carrental.util.FuelType;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Stefan on 25.05.2017.
- *
- *
- *
- * MAKE java doc acasa!
+ * Created by Stefan on 30.05.2017.
  */
+public class CarRepository {
 
-/**
- *
- * Repository interface for Car
- */
-public interface CarRepository {
 
-    /**
-     * Retuns all cars
-     *
-     * @return List<Car>
-     *
-      */
-    List<Car> getAll();
+    private List<Car> cars = new ArrayList<Car>();
+//Constructor 1
+    public CarRepository(List<Car> cars) {
+        this.cars = cars;
+    }
+//Constructor 2
+    public CarRepository() {
+
+    }
 
     /**
-     * Return cars by fuel type
-     * @param
-     * @return
+     * Adds a car to the list
+     * @param car A new car in the list
      */
-    List<Car> getCarsByFuelType();
-    /**
-     * Return all the cars of a certain maker
-     * @param
-     * @return List<Car>
-     */
-    List<Car> getCarsByMake();
-    /**
-     * Add a car to list
-     * @param
-     * @return List<Car>
-     */
-
-    void add(Car car);
+    public void addCar(Car car){
+        cars.add(car);
+    }
 
     /**
-     * Deletes a car from list
-     * @param car
+     *  Getter
+     * @return Returns all cars
      */
-    void delete(Car car);
-
-    /**
-     * Updates a certain car
-     * @param car
-     */
-    void update (Car car);
-
-
+    public List<Car> getCars() {
+        return cars;
+    }
 
 
 }

@@ -1,93 +1,62 @@
 package ro.sci.carrental;
 
 import ro.sci.carrental.domain.Car;
-import ro.sci.carrental.domain.Customer;
 import ro.sci.carrental.repository.CarRepository;
-import ro.sci.carrental.repository.CarRepositoryImpl;
-import ro.sci.carrental.service.SearchService;
-import ro.sci.carrental.service.SearchServiceImpl;
-import ro.sci.carrental.util.FuelType;
-import ro.sci.carrental.util.VehicleCategory;
 
-import java.util.List;
+
+import static ro.sci.carrental.util.FuelType.DIESEL;
+import static ro.sci.carrental.util.FuelType.HYBRID;
+import static ro.sci.carrental.util.FuelType.PETROL;
+
 
 /**
- * <h1>RentACar Model</h1>
- * RentACar simulates a car rental business.
- * <p>
- * <h>
- * This is the main method which makes use of static void method searches() to run multiple queries
+ * Created by Stefan on 28.05.2017.
  *
- * @author Flaviu Lupoian
- * @version 1.0
- * @since 1.8
+ *
  */
 public class Main {
+
+
     public static void main(String[] args) {
-        // initializam masini
-        Car mercedes = new Car("Mercedes", "e220d", 5.0f, "Black", 5, 4, true, true, true, FuelType.DIESEL, VehicleCategory.LIMOUSINE);
-        Car bmw = new Car("BMW", "520d", 5.0f, "Silver", 5, 4, true, true, true, FuelType.GAS, VehicleCategory.SPORT);
-        Car vw = new Car("Volkswagen", "Passat", 5.0f, "White", 5, 4, true, false, false, FuelType.GPL, VehicleCategory.SEDAN);
 
-        CarRepository carRepository = new CarRepositoryImpl();
+        System.out.println("_____________________________");
 
-        //introducem masini
-        carRepository.add(mercedes);
-        carRepository.add(bmw);
-        carRepository.add(vw);
 
-        //initializam clienti
-        Customer customer1 = new Customer("Dorel", "Cretu", "Str. Carpati nr.1", "Cluj-Napoca");
-        Customer customer2 = new Customer("Pavel", "Cristea", "Str. Bucegi nr.1", "Oradea");
+        Car toyotaPrius = new Car("Toyota", "Prius", "FAMILY", 4, 5,
+                "White", true, true, HYBRID, 2014, 45,
+                121, 4 );//de ce nu pot pune cu virgula la carFuelConsumption !?
 
-        //efectuam cautari
+        Car mercedesSLR = new Car("Mercedes", "SLR", "SPORTS", 2, 2,
+                "Black", false, true, PETROL, 2003, 97,
+                650, 15);
+
+        Car fordTransit = new Car("Ford", "Transit", "UTILITY", 3, 3,
+                "Gray", true, true, DIESEL, 2015, 94,
+                185, 15);
+
+        // new object
+        CarRepository carRepository = new CarRepository();
+        // add cars in list
+        carRepository.addCar(toyotaPrius);
+        carRepository.addCar(mercedesSLR);
+        carRepository.addCar(fordTransit);
+
         searches(carRepository);
 
 
+
+
+
+
+
     }
 
-    /**
-     * Public static void method searches() runs multiple searches criteria
-     *
-     * @param carRepository holds the values of car list.
-     */
     private static void searches(CarRepository carRepository) {
-        //cautarea tuturor masinilor
-        System.out.println("Lista masinilor din CarRepository este: ");
-        for (Car car : carRepository.getAll()) {
-            System.out.println(car.getMake());
+        System.out.println("Toate masinile din lista:");
+        for (Car car : carRepository.getCars()){
+            System.out.println(car.getCarMaker());
         }
-        System.out.println("_____________________________________");
 
-        //cautare dupa marca
-        SearchService search1 = new SearchServiceImpl(carRepository);
-        List<Car> foundCarsByMake = search1.findCarsByMake("BMW");
-
-        System.out.println("Cautarea dupa Marca returneaza urmatoarele masini: ");
-        for (Car car : foundCarsByMake) {
-            System.out.println(car.getMake() + " " + car.getModel());
-        }
-        System.out.println("_____________________________________");
-
-        //cautare dupa marca si model
-        SearchService search2 = new SearchServiceImpl(carRepository);
-        List<Car> foundCarsByMakeAndModel = search2.findCarsByMakeAndModel("Mercedes", "e220d");
-
-        System.out.println("Cautarea dupa Marca si Model returneaza urmatoarele masini: ");
-        for (Car car : foundCarsByMakeAndModel) {
-            System.out.println(car.getMake() + " " + car.getModel());
-        }
-        System.out.println("_____________________________________");
-
-        //cautare dupa Marca, Model, Culoare si Locuri
-        SearchService search3 = new SearchServiceImpl(carRepository);
-        List<Car> foundCarsByMultipleCategories = search3.findCarsByMultipleCategories(
-                "Volkswagen", "Passat", "White", 5);
-
-        System.out.println("Cautarea dupa Marca, Model, Culoare si Locuri returneaza urmatoarele masini: ");
-        for (Car car : foundCarsByMultipleCategories) {
-            System.out.println(car.getMake() + " " + car.getModel());
-        }
-        System.out.println("_____________________________________");
     }
+
 }

@@ -1,63 +1,50 @@
 package ro.sci.carrental.domain;
 
 /**
- * Customer Class contains customers blueprint.
- *
- * @author Flaviu Lupoian
- * @version 1.0
- * @since 1.8
+ * Created by Stefan on 29.05.2017.
  */
 public class Customer {
-    private String firstName;
-    private String lastName;
-    private String streetAddress;
-    private String city;
+    private String customerFirstName;
+    private String customerLastName;
+    private int customerAge;
 
-    /**
-     *
-     * @param firstName
-     * @param lastName
-     * @param streetAddress
-     * @param city
-     */
 
-    // constructor
-    public Customer(String firstName, String lastName, String streetAddress, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.streetAddress = streetAddress;
-        this.city = city;
+//Constructor
+    public Customer(String customerFirstName, String customerLastName, int customerAge){
+        this.customerAge = customerAge;
+        this.customerFirstName = customerFirstName;
+        this.customerLastName = customerLastName;
     }
 
-    public String getFirstName() {
-        return firstName;
+    //Getters and Setters
+    public String getCustomerFirstName() {
+        return customerFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getCustomerLastName() {
+        return customerLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
     }
 
-    public String getStreetAddress() {
-        return streetAddress;
+    public int getCustomerAge() {
+        return customerAge;
     }
 
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setCustomerAge(int customerAge) {
+        this.customerAge = customerAge;
     }
+    //-----------------------------------------------
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+
+
+
+
 }

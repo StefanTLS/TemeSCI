@@ -1,116 +1,134 @@
 package ro.sci.carrental.domain;
 
 import ro.sci.carrental.util.FuelType;
-import ro.sci.carrental.util.VehicleCategory;
+
 
 /**
- * Car Class initialisation
+ * @author Stefan
  *
- * @author Flaviu Lupoian
- * @version 1.0
- * @since 1.8
+ *
  */
 public class Car {
-    private String make;
-    private String model;
-    private float size;
-    private String color;
-    private int seats;
-    private int doors;
-    private boolean ac = false;
-    private boolean gps = false;
-    private boolean gearbox = false; //TRUE automatic, FALSE manual
+
+
+    private String carMaker;
+    private String carModel;
+    private String carType;
+    private int carDoorsNumber;
+    private int carMaxPassengers;
+    private String carColor;
+    private boolean carGps;
+    private boolean carAutomaticGearbox;
     private FuelType fuelType;
-    private VehicleCategory vehicleCategory;
+    private int carModelYear;
+    private int carFuelTankCapacity;
+    private int carPower;
+    private double carFuelConsumption;
 
+    /**
+     *
+     * @param carMaker The car making company, examples: Toyota, Ford, Volkswagen etc.
+     * @param carModel The car model, in broad terms mostly. Examples: Prius, Focus, Passat etc.
+     * @param carType The car type based on usage/purpose. They are: Economy, Family, Sports, Off-road, Luxury, Utility.
+     * @param carDoorsNumber
+     * @param carMaxPassengers The maximum number of passengers legally in a car, including the driver
+     * @param carColor
+     * @param carGps
+     * @param carAutomaticGearbox True = automatic gearbox, false = manual gearbox
+     * @param fuelType PETROL, DIESEL, LPG, ELECTRIC
+     * @param carModelYear Car's year of manufacture not it's age. Example: 2010(not 7 years old)
+     * @param carFuelTankCapacity Car's fuel tank capacity in LITRES
+     * @param carPower In HP - HorsePower
+     * @param carFuelConsumption Factory advertised average fuel consumption, can be in litres or  kilowatt-hour(kWh) for electric
+     */
+    //Constructor
+    public Car(String carMaker, String carModel, String carType, int carDoorsNumber, int carMaxPassengers, String carColor,
+               boolean carGps, boolean carAutomaticGearbox, FuelType fuelType, int carModelYear, int carFuelTankCapacity, int carPower,
+               int carFuelConsumption) {
 
-    // constructor
-    public Car(String make, String model, float size, String color, int seats, int doors, boolean ac, boolean gps, boolean gearbox, FuelType fuelType, VehicleCategory vehicleCategory) {
-        this.make = make;
-        this.model = model;
-        this.size = size;
-        this.color = color;
-        this.seats = seats;
-        this.doors = doors;
-        this.ac = ac;
-        this.gps = gps;
-        this.gearbox = gearbox;
+        this.carMaker = carMaker;
+        this.carModel = carModel;
+        this.carType = carType;
+        this.carDoorsNumber = carDoorsNumber;
+        this.carMaxPassengers = carMaxPassengers;
+        this.carColor = carColor;
+        this.carGps = carGps;
+        this.carAutomaticGearbox = carAutomaticGearbox;
         this.fuelType = fuelType;
-        this.vehicleCategory = vehicleCategory;
+        this.carModelYear = carModelYear;
+        this.carFuelTankCapacity = carFuelTankCapacity;
+        this.carPower = carPower;
+        this.carFuelConsumption = carFuelConsumption;
     }
 
 
 
-    public String getMake() {
-        return make;
+
+    //Getters and Setters
+
+
+    public String getCarMaker() {
+        return carMaker;
     }
 
-    public void setMake(String make) {
-        this.make = make;
+    public void setCarMaker(String carMaker) {
+        this.carMaker = carMaker;
     }
 
-    public String getModel() {
-        return model;
+    public String getCarModel() {
+        return carModel;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     }
 
-    public float getSize() {
-        return size;
+    public String getCarType() {
+        return carType;
     }
 
-    public void setSize(float size) {
-        this.size = size;
+    public void setCarType(String carType) {
+        this.carType = carType;
     }
 
-    public String getColor() {
-        return color;
+    public int getCarDoorsNumber() {
+        return carDoorsNumber;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setCarDoorsNumber(int carDoorsNumber) {
+        this.carDoorsNumber = carDoorsNumber;
     }
 
-    public int getSeats() {
-        return seats;
+    public int getCarMaxPassengers() {
+        return carMaxPassengers;
     }
 
-    public void setSeats(int seats) {
-        this.seats = seats;
+    public void setCarMaxPassengers(int carMaxPassengers) {
+        this.carMaxPassengers = carMaxPassengers;
     }
 
-    public int getDoors() {
-        return doors;
+    public String getCarColor() {
+        return carColor;
     }
 
-    public void setDoors(int doors) {
-        this.doors = doors;
+    public void setCarColor(String carColor) {
+        this.carColor = carColor;
     }
 
-    public boolean isAc() {
-        return ac;
+    public boolean isCarGps() {
+        return carGps;
     }
 
-    public void setAc(boolean ac) {
-        this.ac = ac;
+    public void setCarGps(boolean carGps) {
+        this.carGps = carGps;
     }
 
-    public boolean isGps() {
-        return gps;
+    public boolean isCarAutomaticGearbox() {
+        return carAutomaticGearbox;
     }
 
-    public void setGps(boolean gps) {
-        this.gps = gps;
-    }
-
-    public boolean isGearbox() {
-        return gearbox;
-    }
-
-    public void setGearbox(boolean gearbox) {
-        this.gearbox = gearbox;
+    public void setCarAutomaticGearbox(boolean carAutomaticGearbox) {
+        this.carAutomaticGearbox = carAutomaticGearbox;
     }
 
     public FuelType getFuelType() {
@@ -121,11 +139,35 @@ public class Car {
         this.fuelType = fuelType;
     }
 
-    public VehicleCategory getVehicleCategory() {
-        return vehicleCategory;
+    public int getCarModelYear() {
+        return carModelYear;
     }
 
-    public void setVehicleCategory(VehicleCategory vehicleCategory) {
-        this.vehicleCategory = vehicleCategory;
+    public void setCarModelYear(int carModelYear) {
+        this.carModelYear = carModelYear;
+    }
+
+    public int getCarFuelTankCapacity() {
+        return carFuelTankCapacity;
+    }
+
+    public void setCarFuelTankCapacity(int carFuelTankCapacity) {
+        this.carFuelTankCapacity = carFuelTankCapacity;
+    }
+
+    public int getCarPower() {
+        return carPower;
+    }
+
+    public void setCarPower(int carPower) {
+        this.carPower = carPower;
+    }
+
+    public double getCarFuelConsumption() {
+        return carFuelConsumption;
+    }
+
+    public void setCarFuelConsumption(double carFuelConsumption) {
+        this.carFuelConsumption = carFuelConsumption;
     }
 }
