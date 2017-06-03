@@ -24,7 +24,8 @@ public class Main {
 
         Car toyotaPrius = new Car("Toyota", "Prius", "FAMILY", 4, 5,
                 "White", true, true, HYBRID, 2014, 45,
-                121, 4 );//de ce nu pot pune cu virgula la carFuelConsumption !?
+                121, 4 );
+ //de ce nu pot pune cu virgula la carFuelConsumption?
 
         Car mercedesSLR = new Car("Mercedes", "SLR", "SPORTS", 2, 2,
                 "Black", false, true, PETROL, 2003, 97,
@@ -54,7 +55,7 @@ public class Main {
     private static void searches(CarRepository carRepository) {
         System.out.println("Toate masinile din lista:");
         for (Car car : carRepository.getCars()){
-            System.out.println(car.getCarMaker());
+            System.out.println(car.getCarMaker() +" " + car.getCarModel());
         }
 
     }
