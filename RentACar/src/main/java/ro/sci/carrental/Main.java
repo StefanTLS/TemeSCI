@@ -12,6 +12,7 @@ import static ro.sci.carrental.util.FuelType.HYBRID;
 import static ro.sci.carrental.util.FuelType.PETROL;
 
 
+
 /**
  * Created by Stefan on 28.05.2017.
  *
@@ -21,6 +22,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+        
 
         System.out.println("_____________________________");
 
@@ -74,6 +76,9 @@ public class Main {
 //        for (Car car : foundCars){
 //            System.out.println(car.getCarMaker() + "" + car.getCarModel());
 //        }
+
+
+        System.out.println("--------------Customer-----------------");
 
 
 
