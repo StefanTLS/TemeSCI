@@ -1,15 +1,16 @@
 package ro.sci.carrental;
 
-import ro.sci.carrental.domain.Car;
-import ro.sci.carrental.repository.CarRepository;
+import ro.sci.carrental.domain.car.Car;
+import ro.sci.carrental.repository.CarRepositoryImpl;
 import ro.sci.carrental.services.CarSearchService;
+import ro.sci.carrental.services.CarSearchServiceImpl;
 
 
 import java.util.List;
 
-import static ro.sci.carrental.util.FuelType.DIESEL;
-import static ro.sci.carrental.util.FuelType.HYBRID;
-import static ro.sci.carrental.util.FuelType.PETROL;
+import static ro.sci.carrental.domain.car.FuelType.DIESEL;
+import static ro.sci.carrental.domain.car.FuelType.HYBRID;
+import static ro.sci.carrental.domain.car.FuelType.PETROL;
 
 
 
@@ -29,7 +30,7 @@ public class Main {
 
         Car toyotaPrius = new Car("Toyota", "Prius", "FAMILY", 4, 5,
                 "White", true, true, HYBRID, 2014, 45,
-                121, 4 );
+                121, 4.7 );
  //de ce nu pot pune cu virgula la carFuelConsumption?
 
         Car mercedesSLR = new Car("Mercedes", "SLR", "SPORTS", 2, 2,
@@ -44,16 +45,36 @@ public class Main {
                 "Gray", true, true, DIESEL, 2015, 94,
                 185, 15);
 
+
+         fordTransit2 = null; //Truly deleted but requires exceptions?
+
+
+
         // new object----------------------------
-        CarRepository carRepository = new CarRepository();
+        CarRepositoryImpl carRepositoryImpl = new CarRepositoryImpl();
+
+
+
         // add cars in list
-        carRepository.addCar(toyotaPrius);
-        carRepository.addCar(mercedesSLR);
-        carRepository.addCar(fordTransit);
-        carRepository.addCar(fordTransit2);
+        carRepositoryImpl.addCar(toyotaPrius);
+        carRepositoryImpl.addCar(mercedesSLR);
+        carRepositoryImpl.addCar(fordTransit);
+        carRepositoryImpl.addCar(fordTransit2);
+
+
+
+        //carRepositoryImpl.deleteCar(fordTransit2); - Deleted from List but remains in memory and would work for another collection
+
+
+
+
+        //toyotaPrius.setCarColor("Purple");
+
+
+
 
         //search by maker---------------------------
-        CarSearchService searchByMaker = new CarSearchService(  carRepository);
+        CarSearchService searchByMaker = new CarSearchServiceImpl(carRepositoryImpl);
         List<Car> foundCarsByMaker = searchByMaker.findCarsByMaker("Ford");
         System.out.println("Cars by maker found: ");
         for (Car car : foundCarsByMaker){
@@ -62,20 +83,23 @@ public class Main {
 
 
         //Search by maker and model---------------------------------
-        CarSearchService searchByMakerAndModel = new CarSearchService(carRepository);
+        CarSearchService searchByMakerAndModel = new CarSearchServiceImpl(carRepositoryImpl);
         List<Car> foundCarsByMakerAndModel = searchByMakerAndModel.findCarsByMakerAndModel("Toyota", "Prius");
         System.out.println("Search resutls by maker and model:");
         for (Car car : foundCarsByMakerAndModel){
             System.out.println((car.getCarMaker() + " " + car.getCarModel()));
         }
 
-        //Search by anything? Doesn't work as intended
-//        CarSearchService searchByAnything = new CarSearchService(carRepository);
+        //Search by anything? ------------------- Doesn't work----------------------
+//        CarSearchServiceImpl searchByAnything = new CarSearchServiceImpl(carRepositoryImpl);
 //        List<Car> foundCars = searchByAnything.findCarsMultiple("Mercedes");
 //        System.out.println("Search results: ");
 //        for (Car car : foundCars){
 //            System.out.println(car.getCarMaker() + "" + car.getCarModel());
 //        }
+
+
+
 
 
         System.out.println("--------------Customer-----------------");
@@ -86,18 +110,28 @@ public class Main {
 
 
         //all the cars--------------
-        searches(carRepository);
+        searches(carRepositoryImpl);
+
+
     }
 
     //all the cars--------------
-    private static void searches(CarRepository carRepository) {
+    private static void searches(CarRepositoryImpl carRepositoryImpl) {
         System.out.println("Toate masinile din lista:");
-        for (Car car : carRepository.getCars()){
+        for (Car car : carRepositoryImpl.getCars()){
             System.out.println(car.getCarMaker() +" " + car.getCarModel());
+        }
+
+        System.out.println("Car color:");
+
+        for (Car car : carRepositoryImpl.getCars()){
+            System.out.println(car.getCarModel()+ " " + car.getCarColor());
         }
 
     }
 
+
+    //Update car?
 
 
 

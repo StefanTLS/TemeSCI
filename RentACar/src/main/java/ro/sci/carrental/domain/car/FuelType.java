@@ -1,4 +1,4 @@
-package ro.sci.carrental.util;
+package ro.sci.carrental.domain.car;
 
 /**
  * Created by Stefan on 28.05.2017.

@@ -1,6 +1,6 @@
-package ro.sci.carrental.domain;
+package ro.sci.carrental.domain.customer;
 
-import ro.sci.carrental.util.CustomerAdress;
+import ro.sci.carrental.domain.customer.CustomerAdress;
 
 /**
  * Created by Stefan on 29.05.2017.

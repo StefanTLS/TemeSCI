@@ -1,4 +1,4 @@
-package ro.sci.carrental.util;
+package ro.sci.carrental.domain.customer;
 
 /**
  * Created by Stefan on 03.06.2017.

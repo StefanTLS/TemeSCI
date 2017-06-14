@@ -1,43 +1,23 @@
 package ro.sci.carrental.repository;
 
-import ro.sci.carrental.domain.Car;
+import ro.sci.carrental.domain.car.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Stefan on 30.05.2017.
+ * Created by Stefan on 12.06.2017.
  */
-public class CarRepository {
+public interface CarRepository {
 
+    List<Car> getCars();
 
-    public List<Car> cars = new ArrayList<Car>();
+    void addCar(Car car);
 
-//Constructor 1
-    public CarRepository(List<Car> cars) {
-        this.cars = cars;
-    }
+    List<Car> findAll();
 
-//Constructor 2
-    public CarRepository() {
+    void getCar(Car car);
 
-    }
+    void updateCar(Car car);
 
-    /**
-     * Adds a car to the list
-     * @param car A new car in the list
-     */
-    public void addCar(Car car){
-        cars.add(car);
-    }
-
-    /**
-     *  Getter
-     * @return Returns all cars
-     */
-    public List<Car> getCars() {
-        return cars;
-    }
-
-
+    void deleteCar(Car car);
 }

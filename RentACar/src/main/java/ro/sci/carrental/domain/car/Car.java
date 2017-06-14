@@ -1,6 +1,4 @@
-package ro.sci.carrental.domain;
-
-import ro.sci.carrental.util.FuelType;
+package ro.sci.carrental.domain.car;
 
 
 /**
@@ -8,7 +6,7 @@ import ro.sci.carrental.util.FuelType;
  *
  *
  */
-public class Car {
+public class Car  {
 
 
     private String carMaker;
@@ -25,9 +23,16 @@ public class Car {
     private int carPower;
     private double carFuelConsumption;
 
+
+    //Constructor
+    public Car() {
+
+    }
+
+
+    //Constructor 2
     /**
-     *
-     * @param carMaker The car making company, examples: Toyota, Ford, Volkswagen etc.
+     *  @param carMaker The car making company, examples: Toyota, Ford, Volkswagen etc.
      * @param carModel The car model, in broad terms mostly. Examples: Prius, Focus, Passat etc.
      * @param carType The car type based on usage/purpose. They are: Economy, Family, Sports, Off-road, Luxury, Utility.
      * @param carDoorsNumber
@@ -41,10 +46,9 @@ public class Car {
      * @param carPower In HP - HorsePower
      * @param carFuelConsumption Factory advertised average fuel consumption, can be in litres or  kilowatt-hour(kWh) for electric
      */
-    //Constructor
     public Car(String carMaker, String carModel, String carType, int carDoorsNumber, int carMaxPassengers, String carColor,
                boolean carGps, boolean carAutomaticGearbox, FuelType fuelType, int carModelYear, int carFuelTankCapacity, int carPower,
-               int carFuelConsumption) {
+               double carFuelConsumption) {
 
         this.carMaker = carMaker;
         this.carModel = carModel;
@@ -170,4 +174,25 @@ public class Car {
     public void setCarFuelConsumption(double carFuelConsumption) {
         this.carFuelConsumption = carFuelConsumption;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carMaker='" + carMaker + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", carType='" + carType + '\'' +
+                ", carDoorsNumber=" + carDoorsNumber +
+                ", carMaxPassengers=" + carMaxPassengers +
+                ", carColor='" + carColor + '\'' +
+                ", carGps=" + carGps +
+                ", carAutomaticGearbox=" + carAutomaticGearbox +
+                ", fuelType=" + fuelType +
+                ", carModelYear=" + carModelYear +
+                ", carFuelTankCapacity=" + carFuelTankCapacity +
+                ", carPower=" + carPower +
+                ", carFuelConsumption=" + carFuelConsumption +
+                '}';
+    }
+
+
 }

@@ -1,35 +1,25 @@
 package ro.sci.carrental.repository;
 
-import ro.sci.carrental.domain.Customer;
+import ro.sci.carrental.domain.customer.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Stefan on 03.06.2017.
- *
+ * Created by Stefan on 11.06.2017.
  */
-public class CustomerRepository {
+public interface CustomerRepository {
 
 
-    public List<Customer> customers = new ArrayList<Customer>();
 
-    //Constructors
-    public CustomerRepository(List<Customer> customers) {
-        this.customers = customers;
-    }
+    void addCustomer (Customer customer);
 
-    public CustomerRepository() {
-    }
+    List<Customer> findAll();
+
+    void updateCustomer(Customer customer);
+
+    void deleteCustomer(Customer customer);
 
 
-    //Getter
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-    public void addCustomer( Customer customer){
-         customers.add(customer);
 
-    }
+
 }
-
