@@ -5,10 +5,10 @@ import ro.sci.carrental.domain.car.Car;
 import java.util.List;
 
 /**
- * Created by Stefan on 12.06.2017.
+ * Created by Stefan on 18.06.2017.
  */
 public interface CarRepository {
-
+    //Getter
     List<Car> getCars();
 
     void addCar(Car car);

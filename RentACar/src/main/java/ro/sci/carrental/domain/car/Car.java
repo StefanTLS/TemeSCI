@@ -119,7 +119,7 @@ public class Car  {
         this.carColor = carColor;
     }
 
-    public boolean isCarGps() {
+    public boolean hasGps() {
         return carGps;
     }
 
@@ -127,7 +127,7 @@ public class Car  {
         this.carGps = carGps;
     }
 
-    public boolean isCarAutomaticGearbox() {
+    public boolean hasCarAutomaticGearbox() {
         return carAutomaticGearbox;
     }
 

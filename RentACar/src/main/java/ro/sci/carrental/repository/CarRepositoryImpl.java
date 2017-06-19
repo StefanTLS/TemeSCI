@@ -3,15 +3,15 @@ package ro.sci.carrental.repository;
 import ro.sci.carrental.domain.car.Car;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
+
 import java.util.List;
-import java.lang.String;
+
 
 /**
  * Created by Stefan on 30.05.2017.
  *
  *
- * ToDo: Implement remove and find
+ *
  *
  */
 public class CarRepositoryImpl implements  CarRepository {
@@ -34,6 +34,8 @@ public class CarRepositoryImpl implements  CarRepository {
         return cars;
     }
 
+
+
     /**
      * Add a car in the List
      * @param car
@@ -48,9 +50,10 @@ public class CarRepositoryImpl implements  CarRepository {
     }
 
     /**
-     * returns all carrs found in the list
+     * returns all cars found in the list
      * @return
      */
+
     public List<Car> findAll(){
         return cars;
 
@@ -68,7 +71,10 @@ public class CarRepositoryImpl implements  CarRepository {
         cars.remove(car);
 
 
+    }
 
+    public void foreverDeletCar(Car car){
 
+        car = null;
     }
 }

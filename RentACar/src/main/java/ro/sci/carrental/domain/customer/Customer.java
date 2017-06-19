@@ -15,7 +15,11 @@ public class Customer {
 
 
 
-    //Constructor
+    //Constructors
+
+
+    public Customer() {
+    }
 
     public Customer(String customerFirstName, String customerLastName, int customerAge,
                     String customerTelephoneNumber, CustomerAdress customerAdress) {

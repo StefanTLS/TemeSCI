@@ -1,11 +1,16 @@
 package ro.sci.carrental;
 
 import ro.sci.carrental.domain.car.Car;
+import ro.sci.carrental.domain.customer.Customer;
 import ro.sci.carrental.repository.CarRepositoryImpl;
+import ro.sci.carrental.repository.CustomerRepositoryImpl;
 import ro.sci.carrental.services.CarSearchService;
 import ro.sci.carrental.services.CarSearchServiceImpl;
+import ro.sci.carrental.services.CustomerServiceImpl;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import static ro.sci.carrental.domain.car.FuelType.DIESEL;
@@ -31,7 +36,7 @@ public class Main {
         Car toyotaPrius = new Car("Toyota", "Prius", "FAMILY", 4, 5,
                 "White", true, true, HYBRID, 2014, 45,
                 121, 4.7 );
- //de ce nu pot pune cu virgula la carFuelConsumption?
+
 
         Car mercedesSLR = new Car("Mercedes", "SLR", "SPORTS", 2, 2,
                 "Black", false, true, PETROL, 2003, 97,
@@ -46,7 +51,14 @@ public class Main {
                 185, 15);
 
 
-         fordTransit2 = null; //Truly deleted but requires exceptions?
+
+
+
+
+
+        //Truly deleted but requires exceptions?
+         //fordTransit2 = null;
+
 
 
 
@@ -61,6 +73,17 @@ public class Main {
         carRepositoryImpl.addCar(fordTransit);
         carRepositoryImpl.addCar(fordTransit2);
 
+        //toString
+//            System.out.println("Toate masinile din lista:");
+//            for (Car car : carRepositoryImpl.getCars()) {
+//                System.out.println(Array.toString(list.toArray));
+//            }
+
+
+
+
+
+
 
 
         //carRepositoryImpl.deleteCar(fordTransit2); - Deleted from List but remains in memory and would work for another collection
@@ -68,25 +91,33 @@ public class Main {
 
 
 
-        //toyotaPrius.setCarColor("Purple");
 
 
-
-
-        //search by maker---------------------------
+        //search car by maker---------------------------
         CarSearchService searchByMaker = new CarSearchServiceImpl(carRepositoryImpl);
-        List<Car> foundCarsByMaker = searchByMaker.findCarsByMaker("Ford");
+
+
+        List<Car> foundCarsByMaker = searchByMaker.findCarsByMaker("Foprd");
+
         System.out.println("Cars by maker found: ");
+
         for (Car car : foundCarsByMaker){
             System.out.println((car.getCarMaker()));
         }
 
 
-        //Search by maker and model---------------------------------
+        //Search car by maker and model---------------------------------
         CarSearchService searchByMakerAndModel = new CarSearchServiceImpl(carRepositoryImpl);
+
         List<Car> foundCarsByMakerAndModel = searchByMakerAndModel.findCarsByMakerAndModel("Toyota", "Prius");
         System.out.println("Search resutls by maker and model:");
         for (Car car : foundCarsByMakerAndModel){
+            System.out.println((car.getCarMaker() + " " + car.getCarModel()));
+        }
+
+        List<Car> foundCarsByMakerAndModel2 = searchByMakerAndModel.findCarsByMakerAndModel("Mercedes", "SLR");
+        System.out.println("Search resutls by maker and model:");
+        for (Car car : foundCarsByMakerAndModel2){
             System.out.println((car.getCarMaker() + " " + car.getCarModel()));
         }
 
@@ -102,7 +133,7 @@ public class Main {
 
 
 
-        System.out.println("--------------Customer-----------------");
+
 
 
 
@@ -110,10 +141,62 @@ public class Main {
 
 
         //all the cars--------------
+        System.out.println("--------------------------------------------------");
+        searches(carRepositoryImpl);
+
+        carRepositoryImpl.deleteCar(fordTransit2);
+
         searches(carRepositoryImpl);
 
 
+
+
+
+        //Update--------------------------------------------
+        toyotaPrius.setCarColor("Purple");
+        //carRepositoryImpl.updateCar(toyotaPrius.setCarColor("Miau"));
+
+
+
+
+        System.out.println("--------------Customer-----------------");
+
+        //creating customer objects        ---------------------------
+        Customer mihaiPopa = new Customer();
+        Customer florinRadu = new Customer();
+        Customer biancaOanea = new Customer();
+
+        //Customer Repo-------------------------------------------
+        CustomerRepositoryImpl customerRepository = new CustomerRepositoryImpl();
+
+        //Add in repoList     --------------------
+
+        customerRepository.addCustomer(mihaiPopa);
+        customerRepository.addCustomer(florinRadu);
+        customerRepository.addCustomer(biancaOanea);
+
+        // update customers with params -------------------------
+        //ToDO - Update more
+
+        mihaiPopa.setCustomerFirstName("Popa");
+        mihaiPopa.setCustomerLastName("Mihai");
+
+
+
+
+
+
+
     }
+    //End psvm
+
+
+
+
+
+
+
+
 
     //all the cars--------------
     private static void searches(CarRepositoryImpl carRepositoryImpl) {
@@ -122,16 +205,17 @@ public class Main {
             System.out.println(car.getCarMaker() +" " + car.getCarModel());
         }
 
-        System.out.println("Car color:");
-
-        for (Car car : carRepositoryImpl.getCars()){
-            System.out.println(car.getCarModel()+ " " + car.getCarColor());
-        }
-
     }
 
 
-    //Update car?
+
+
+
+
+
+
+
+
 
 
 

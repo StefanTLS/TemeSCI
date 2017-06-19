@@ -11,8 +11,11 @@ public class CustomerAdress {
     private String customerAdressNumber;
     private String customerPostalCode;
 
-    //Constructor
+    //Constructors
 
+
+    public CustomerAdress() {
+    }
 
     public CustomerAdress(String customerCountry, String customerCity, String customerStreet,
                           String customerAdressNumber, String customerPostalCode) {
