@@ -24,12 +24,12 @@ public class CalculatePriceTest {
         rentalDates2 = new RentalCalendar(new LocalDate(2017,3,29), new LocalDate(2017,3,30));
         testCar2 = new Car("test", "test", ECONOMY);
 
-        calculatePrice2.setCalendar(rentalDates2);
+
     }
     @Test
     public void testTest(){
 
-        assertEquals(15, calculatePrice2.calculatePrice(testCar2), 0);
+        assertEquals(15, calculatePrice2.calculatePrice(testCar2, rentalDates2), 0);
     }
 
 
@@ -40,11 +40,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,30));
         Car testCar = new Car("test", "test", ECONOMY);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 15;
@@ -58,11 +56,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,29));
         Car testCar = new Car("test", "test", ECONOMY);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 0.0;
@@ -76,11 +72,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2018,3,29));
         Car testCar = new Car("test", "test", ECONOMY);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 5475;
@@ -94,11 +88,10 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2015,3,29),
                 new LocalDate(2016,3,29));
         Car testCar = new Car("test", "test", ECONOMY);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
+
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 5490;
@@ -112,11 +105,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,30));
         Car testCar = new Car("test", "test", MEDIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 25;
@@ -128,13 +119,12 @@ public class CalculatePriceTest {
         //given
         CalculatePrice calculatePrice = new CalculatePrice();
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
-                new LocalDate(2017,3,29));
+                new LocalDate(2017,3,28));
         Car testCar = new Car("test", "test", MEDIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
+
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 0;
@@ -148,11 +138,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2018,3,29));
         Car testCar = new Car("test", "test", MEDIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 9125;
@@ -166,11 +154,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2015,3,29),
                 new LocalDate(2016,3,29));
         Car testCar = new Car("test", "test", MEDIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 9150;
@@ -184,11 +170,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,30));
         Car testCar = new Car("test", "test", PREMIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 45;
@@ -202,11 +186,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,29));
         Car testCar = new Car("test", "test", PREMIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 0;
@@ -220,11 +202,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2018,3,29));
         Car testCar = new Car("test", "test", PREMIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 16425;
@@ -238,11 +218,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2015,3,29),
                 new LocalDate(2016,3,29));
         Car testCar = new Car("test", "test", PREMIUM);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 16470;
@@ -256,11 +234,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,30));
         Car testCar = new Car("test", "test", SUPER);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 200;
@@ -274,11 +250,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2017,3,29));
         Car testCar = new Car("test", "test", SUPER);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 0;
@@ -292,11 +266,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2017,3,29),
                 new LocalDate(2018,3,29));
         Car testCar = new Car("test", "test", SUPER);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 73000;
@@ -310,11 +282,9 @@ public class CalculatePriceTest {
         RentalCalendar rentalDates = new RentalCalendar(new LocalDate(2015,3,29),
                 new LocalDate(2016,3,29));
         Car testCar = new Car("test", "test", SUPER);
-        calculatePrice.setCalendar(rentalDates);
-        calculatePrice.calculatePrice(testCar);
 
         //then
-        double result = calculatePrice.calculatePrice(testCar);
+        double result = calculatePrice.calculatePrice(testCar, rentalDates);
 
         //evaluate
         double expected = 73200;

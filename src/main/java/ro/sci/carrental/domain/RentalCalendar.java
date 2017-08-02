@@ -1,9 +1,10 @@
 package ro.sci.carrental.domain;
 
 
-import org.joda.time.DateTime;
+
+import org.joda.time.Days;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
+
 
 
 /**
@@ -13,6 +14,18 @@ public class RentalCalendar {
 
     private LocalDate pickupDate;
     private LocalDate returnDate;
+
+
+
+    /**
+     * Calculates the time period between pickUpDate and returnDate from calendar represented in number of days.
+     * @return number of days as an integer.
+     */
+    public int numberOfDays() {
+        Days intDays = Days.daysBetween(getPickupDate(), getReturnDate());
+        String intValue = intDays.toString().replaceAll("[^0-9]", "");
+        return Integer.parseInt(intValue);
+    }
 
 
 

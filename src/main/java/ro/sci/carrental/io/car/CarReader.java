@@ -1,11 +1,6 @@
 package ro.sci.carrental.io.car;
 
-
-import com.sun.org.apache.xpath.internal.operations.String;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellReference;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

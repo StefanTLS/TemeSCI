@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Stefan on 10.07.2017.
+ * DAO
  */
 public interface RepoInterface <T> {
     //CRUD++

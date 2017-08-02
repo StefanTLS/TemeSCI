@@ -5,12 +5,17 @@ import ro.sci.carrental.domain.car.CarStatus;
 import ro.sci.carrental.domain.car.FuelType;
 import ro.sci.carrental.domain.car.PriceCategory;
 import ro.sci.carrental.repository.CarRepositoryImpl;
+import ro.sci.carrental.repository.RepoInterface;
 
 import java.util.*;
 
 public class CarSearchServiceImpl implements CarSearchService <Car> {
 
-    private CarRepositoryImpl<Car> carRepository;
+     private RepoInterface<Car> carRepository;
+
+    public CarSearchServiceImpl(RepoInterface<Car> carRepository) {
+        this.carRepository = carRepository;
+    }
 
     public CarSearchServiceImpl(CarRepositoryImpl<Car> carRepository) {
         this.carRepository = carRepository;

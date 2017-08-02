@@ -1,6 +1,7 @@
 package ro.sci.carrental;
 
 
+import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import ro.sci.carrental.domain.CalculatePrice;
 import ro.sci.carrental.domain.RentalCalendar;
@@ -11,11 +12,7 @@ import ro.sci.carrental.io.car.CarWriter;
 import ro.sci.carrental.repository.CarRepositoryImpl;
 import ro.sci.carrental.repository.CustomerRepositoryImpl;
 import ro.sci.carrental.services.CarSearchServiceImpl;
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import static ro.sci.carrental.domain.car.CarStatus.*;
 import static ro.sci.carrental.domain.car.FuelType.*;
 import static ro.sci.carrental.domain.car.PriceCategory.*;
@@ -30,15 +27,17 @@ import static ro.sci.carrental.domain.car.PriceCategory.*;
 public class Main {
 
     private static final Logger LOGGER = Logger.getLogger("MainClass");
+    static Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
+        log.info("Hello this is an info message");
 
         try {
 
         } catch (Exception ex) {
 
 
-            LOGGER.log(Level.SEVERE, "Testing");
+            LOGGER.log(org.apache.log4j.Level.WARN, "Testing");
         }
 
 
@@ -134,37 +133,27 @@ public class Main {
         rentalDates2.setPickupDate(new LocalDate(2017,3,10));
         rentalDates2.setReturnDate(new LocalDate(2017,3,20));
 
-        CalculatePrice calculatePrice = new CalculatePrice();
+        CalculatePrice calculatePriceT = new CalculatePrice();
 
         //---------Car 1 - date 1------------------
-        calculatePrice.setCalendar(rentalDates1);
-        calculatePrice.calculatePrice(toyotaPrius);
-        System.out.println("Your rental cost for car 1 - period 1 is: " + calculatePrice.getTotalPrice());
+        calculatePriceT.calculatePrice(toyotaPrius, rentalDates1);
 
         //----------Car 1 - date 2 -----------------------------
-        calculatePrice.setCalendar(rentalDates2);
-        calculatePrice.calculatePrice(toyotaPrius);
-        System.out.println("Your rental cost for car 1 - period 2 is: " + calculatePrice.getTotalPrice());
+        calculatePriceT.calculatePrice(toyotaPrius, rentalDates2);
 
         //----------Car 2 - date 1-------------
-        calculatePrice.setCalendar(rentalDates1);
-        calculatePrice.calculatePrice(mercedesSLR);
-        System.out.println("Your rental cost for car 2 - period 1 is: " + calculatePrice.getTotalPrice());
+        calculatePriceT.calculatePrice(mercedesSLR, rentalDates1);
 
         //------------ Car 2 - date 2-------------------------
-        calculatePrice.setCalendar(rentalDates2);
-        calculatePrice.calculatePrice(mercedesSLR);
-        System.out.println("Your rental cost for car 2 - period 2 is: " + calculatePrice.getTotalPrice());
+        calculatePriceT.calculatePrice(mercedesSLR, rentalDates2);
 
         //------------ Car 3 - date 3-------------------------
-        RentalCalendar rentalDates3 = new RentalCalendar(new LocalDate(2017,3,29),
-                new LocalDate(2017,3,30));
-        calculatePrice.setCalendar(rentalDates3);
-        calculatePrice.calculatePrice(fordTransit);
+        calculatePriceT.calculatePrice(fordTransit, new RentalCalendar(new LocalDate(2017,3,29),
+                new LocalDate(2017,3,30)));
 
-        System.out.println("Your rental cost for car 3 - period 3 is: " + calculatePrice.getTotalPrice());
+        System.out.println("Your rental cost for car 3 - period 3 is: " + calculatePriceT.getTotalPrice());
 
-        System.out.println("Rental period 3 is: " + calculatePrice.numberOfDays());
+
 
         //-----------Car writer in excel-----------------------
         CarWriter carWriter = new CarWriter();

@@ -2,6 +2,7 @@ package ro.sci.carrental.services;
 
 import ro.sci.carrental.domain.customer.Customer;
 import ro.sci.carrental.repository.CustomerRepositoryImpl;
+import ro.sci.carrental.repository.RepoInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,11 @@ import java.util.List;
  */
 public class CustomerServiceImpl implements CustomerService<Customer>{
 
-    CustomerRepositoryImpl customerRepository = new CustomerRepositoryImpl();
+    private RepoInterface<Customer> customerRepository;
+
+    public CustomerServiceImpl(RepoInterface<Customer> customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     /**
      * Seach customers by first name only.
