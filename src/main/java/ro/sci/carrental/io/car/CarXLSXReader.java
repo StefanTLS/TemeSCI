@@ -7,22 +7,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CarReader {
+public class CarXLSXReader {
 
-    private static final Logger LOGGER = Logger.getLogger("CarReader");
+    private static final Logger LOGGER = Logger.getLogger("CarXLSXReader");
 
     public List<Cell> carReader() {
 
         List<Cell> listInputCars = new ArrayList<>();
 
         try {
-            InputStream fileIn = new FileInputStream("carsIn.xlsx");
+            InputStream fileIn = new FileInputStream("carsInX.xlsx");
             Workbook wb = WorkbookFactory.create(fileIn);
 
             Sheet sheet = null;
             Row row = null;
             Cell cell = null;
-
 
             for (int i = 0; i < wb.getNumberOfSheets(); i++) {
                 sheet = wb.getSheetAt(i);
@@ -35,13 +34,13 @@ public class CarReader {
 
                 }
             }
+            LOGGER.log(Level.INFO, "\nCars successfuly read from the excel file." );
 
-
-            LOGGER.log(Level.INFO, "\nCars Reading DONE." );
         }catch (Exception e) {
             LOGGER.log(Level.WARNING, "Warning: Found IO exception!" + e );
         }
         return listInputCars;
+
     }
 
 

@@ -70,6 +70,9 @@ public class CarRepositoryImpl <Car> implements RepoInterface<Car> {
      */
     @Override
     public List<Car> getAll() {
+        if (cars.isEmpty()){
+            throw new IllegalStateException();
+        }
         return cars;
     }
 

@@ -30,16 +30,17 @@ public class Car  {
 
     //Constructor minim - price cathegory
     public Car(String carMaker, String carModel, PriceCategory priceCategory) throws  Exception {
-        LOGGER.log(Level.FINEST, "In constrcutor : {0}, {1}, {3}", new Object[]{carMaker, carModel, priceCategory});
+        LOGGER.log(Level.FINEST, "In constructor : {0}, {1}, {3}", new Object[]{carMaker, carModel, priceCategory});
 
         this.carMaker = carMaker;
         this.carModel = carModel;
         this.priceCategory = priceCategory;
     }
 
+    public Car() {
+    }
 
-
-    //Constructor  - cu de toate
+//Constructor  - cu de toate
     /**
      *  @param carMaker The car making company, examples: Toyota, Ford, Volkswagen etc.
      * @param carModel The car model, in broad terms mostly. Examples: Prius, Focus, Passat etc.

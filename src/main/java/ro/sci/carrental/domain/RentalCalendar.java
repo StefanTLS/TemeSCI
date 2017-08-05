@@ -9,6 +9,7 @@ import org.joda.time.LocalDate;
 
 /**
  * Created by Stefan on 15.07.2017.
+ * todo booking? in transactions pickup confirmation to change the car status
  */
 public class RentalCalendar {
 

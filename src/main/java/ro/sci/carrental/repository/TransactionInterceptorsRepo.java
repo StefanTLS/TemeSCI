@@ -8,8 +8,4 @@ import ro.sci.carrental.services.CarSearchServiceImpl;
 public class TransactionInterceptorsRepo {
 
 
-
-
-
-
 }

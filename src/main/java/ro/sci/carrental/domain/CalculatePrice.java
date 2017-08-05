@@ -1,11 +1,8 @@
 package ro.sci.carrental.domain;
 
-
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import ro.sci.carrental.domain.car.Car;
-
 import static ro.sci.carrental.domain.car.PriceCategory.*;
 
 /**
@@ -16,6 +13,8 @@ import static ro.sci.carrental.domain.car.PriceCategory.*;
 public class CalculatePrice {
 
     static final Logger LOGGER = Logger.getLogger("Calculate Price");
+
+
 
     private double totalPrice;
 

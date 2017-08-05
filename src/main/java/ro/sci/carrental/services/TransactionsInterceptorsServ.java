@@ -14,36 +14,6 @@ import java.util.List;
 public class TransactionsInterceptorsServ {
 
 
-
-
-
-//    public int count1(){
-//        int count = 0;
-//
-//        for (  ){
-//
-//            count++;
-//
-//
-//        }
-//    boolean dependent = false;
-//
-//
-//    public void somethin (){
-//    for (int i = 0; i < ; i++) {
-//
-//        if(Car.get) {
-//            dependent = true;
-//        }
-//    }
-//
-//    if(!dependent) {
-//        dependentServices.add(callerName);
-//    }
-//
-//
-//    }
-
 }
 
 

@@ -8,9 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class CarWriter {
+public class CarXLSXWriter {
 
-    private static final Logger LOGGER = Logger.getLogger("CarWriter");
+    private static final Logger LOGGER = Logger.getLogger("CarXLSXWriter");
 
     /**
      * Write in the cars file.
@@ -42,7 +42,7 @@ public class CarWriter {
 
         try (Workbook wb = new XSSFWorkbook()) {
 
-            fileOut = new FileOutputStream("carsOut.xlsx");
+            fileOut = new FileOutputStream("carsOutX.xlsx");
             CreationHelper createHelper = wb.getCreationHelper();
 
             //new Sheet
@@ -94,7 +94,7 @@ public class CarWriter {
 
             // Write the output to a file
             wb.write(fileOut);
-            LOGGER.log(Level.INFO, "\nCars Writing DONE.");
+            LOGGER.log(Level.INFO, "\nWriting cars in excel file successful.");
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Warning: Found IO exception!" + e);
         } finally {

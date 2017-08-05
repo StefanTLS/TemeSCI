@@ -74,8 +74,14 @@ public class Customer {
     //-----------------------------------------------
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerFirstName='" + customerFirstName + '\'' +
+                ", customerLastName='" + customerLastName + '\'' +
+                ", customerAge=" + customerAge +
+                ", customerTelephoneNumber='" + customerTelephoneNumber + '\'' +
+                ", customerAdress=" + customerAdress +
+                '}';
+    }
 }

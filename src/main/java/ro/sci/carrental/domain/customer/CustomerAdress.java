@@ -16,8 +16,7 @@ public class CustomerAdress {
     public CustomerAdress() {
     }
 
-    public CustomerAdress(String customerCountry, String customerCity, String customerStreet,
-                          String customerAdressNumber, String customerPostalCode) {
+    public CustomerAdress(String customerCountry, String customerCity, String customerStreet, String customerAdressNumber, String customerPostalCode) {
         this.customerCountry = customerCountry;
         this.customerCity = customerCity;
         this.customerStreet = customerStreet;
@@ -63,5 +62,16 @@ public class CustomerAdress {
 
     public void setCustomerPostalCode(String customerPostalCode) {
         this.customerPostalCode = customerPostalCode;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerAdress{" +
+                "customerCountry='" + customerCountry + '\'' +
+                ", customerCity='" + customerCity + '\'' +
+                ", customerStreet='" + customerStreet + '\'' +
+                ", customerAdressNumber='" + customerAdressNumber + '\'' +
+                ", customerPostalCode='" + customerPostalCode + '\'' +
+                '}';
     }
 }
