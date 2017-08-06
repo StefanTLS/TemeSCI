@@ -32,7 +32,7 @@ public class CarSearchServiceImpl implements CarSearchService <Car> {
      * @return cars of that maker available
      */
     @Override
-    public List<? super Car> findCarsByMaker(String carMaker) {
+    public List< Car> findCarsByMaker(String carMaker) {
         if(carMaker == null){
             System.out.println("Car not in system.");
             throw new IllegalArgumentException();
@@ -54,7 +54,7 @@ public class CarSearchServiceImpl implements CarSearchService <Car> {
      * @return cars found made by the same maker and of the same model.
      */
     @Override
-    public List<? super Car> findCarsByMakerAndModel(String carMaker, String carModel) {
+    public List<Car> findCarsByMakerAndModel(String carMaker, String carModel) {
         if(carModel == null && carMaker == null){
             System.out.println("Car not in system.");
             throw new IllegalArgumentException();

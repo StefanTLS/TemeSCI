@@ -1,7 +1,5 @@
 package ro.sci.carrental.domain;
 
-
-
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
@@ -15,7 +13,6 @@ public class RentalCalendar {
 
     private LocalDate pickupDate;
     private LocalDate returnDate;
-
 
 
     /**
@@ -32,6 +29,10 @@ public class RentalCalendar {
 
     //Constructor
     public RentalCalendar(LocalDate pickupDate, LocalDate returnDate) {
+        LocalDate today = LocalDate.now();
+        if (pickupDate.isBefore(today)){
+            throw new IllegalArgumentException("Planned pickup date should after yesterday.");
+        }
 
         if (pickupDate.isAfter(returnDate)){
             throw  new IllegalArgumentException("Return date should be after pickup date!");
@@ -40,8 +41,6 @@ public class RentalCalendar {
         this.returnDate = returnDate;
     }
 
-    public RentalCalendar() {
-    }
 
     //Getters and setters
     public LocalDate getPickupDate() {

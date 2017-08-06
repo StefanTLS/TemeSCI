@@ -46,7 +46,7 @@ public class Main {
 
         Car toyotaPrius = new Car("Toyota", "Prius", "FAMILY", 4, 5,
                 "White", true, true, HYBRID, 2014, 45,
-                121, 4.7, ECONOMY, AVAILABLE );
+                121, 4.7, ECONOMY, AVAILABLE);
 
         Car mercedesSLR = new Car("Mercedes", "SLR", "SPORTS", 2, 2,
                 "Black", false, true, PETROL, 2003, 97,
@@ -70,18 +70,19 @@ public class Main {
         carRepo1.add(fordTransit2);
 
         //search car tests
+        //todo make this log instead of print?
         CarSearchServiceImpl searchService = new CarSearchServiceImpl(carRepo1);
 
         List<Car> foundCarsByMakerAndModel = (List<Car>) searchService.findCarsByMakerAndModel("ToyOta", "Prius");
 
         System.out.println("Search resutls by maker and model:");
-        for (Car car : foundCarsByMakerAndModel){
+        for (Car car : foundCarsByMakerAndModel) {
             System.out.println((car.getCarMaker() + " " + car.getCarModel()));
         }
 
-        List<Car> foundCarsByMakerAndModel2 = (List<Car>) searchService.findCarsByMakerAndModel("Mercedes", "SLR");
+        List<Car> foundCarsByMakerAndModel2 = searchService.findCarsByMakerAndModel("Mercedes", "SLR");
         System.out.println("Search resutls by maker and model:");
-        for (Car car : foundCarsByMakerAndModel2){
+        for (Car car : foundCarsByMakerAndModel2) {
             System.out.println((car.getCarMaker() + " " + car.getCarModel()));
         }
 
@@ -91,6 +92,7 @@ public class Main {
         toyotaPrius.setCarColor("Purple");
 
         //creating customer objects      ---------------------------
+        //todo Update more customers
         Customer mihaiPopa = new Customer();
         Customer florinRadu = new Customer();
         Customer biancaOanea = new Customer();
@@ -108,14 +110,12 @@ public class Main {
         mihaiPopa.setCustomerLastName("Mihai");
 
         //------------------Rental Price----------------------
-        RentalCalendar rentalDates1 = new RentalCalendar();
-        rentalDates1.setPickupDate(new LocalDate(2017,7,10));
-        rentalDates1.setReturnDate(new LocalDate(2017,7,15));
+        RentalCalendar rentalDates1 = new RentalCalendar(new LocalDate(2018,7,10),new LocalDate(2018,7, 15));
 
 
-        RentalCalendar rentalDates2 = new RentalCalendar();
-        rentalDates2.setPickupDate(new LocalDate(2017,3,10));
-        rentalDates2.setReturnDate(new LocalDate(2017,3,20));
+
+
+        RentalCalendar rentalDates2 = new RentalCalendar(new LocalDate(2018, 3, 10),new LocalDate(2018, 3, 20));
 
         CalculatePrice calculatePriceT = new CalculatePrice();
 
@@ -132,8 +132,8 @@ public class Main {
         calculatePriceT.calculatePrice(mercedesSLR, rentalDates2);
 
         //------------ Car 3 - date 3-------------------------
-        calculatePriceT.calculatePrice(fordTransit, new RentalCalendar(new LocalDate(2017,3,29),
-                new LocalDate(2017,3,30)));
+        calculatePriceT.calculatePrice(fordTransit, new RentalCalendar(new LocalDate(2018, 3, 29),
+                new LocalDate(2018, 3, 30)));
 
         System.out.println("-----------------------------------------------------");
 
@@ -146,53 +146,80 @@ public class Main {
         carXLSXReader.carReader();
 
         //Testing Car Reader + CarConverter------------------------------
-        File carInFile = new File("carsIn.txt");
+        //todo make this better, maybe a separate Class.method? (ASK)
+
         TxtReader txtReader = new TxtReader();
-        List<String> carLines = txtReader.readLines(carInFile);
-        CarTxtConvertor carConvertor = new CarTxtConvertor();
-        int i = 0;
-        for (String line : carLines) {
-            i++;
-            Car car = null;
-            try {
-                car = carConvertor.convert(line);
-            } catch (InvalidEntityException e) {
-                System.out.println("invalid car for: [" + line + "] at line: " + i);
-            }
+        File carInFile = new File("carsIn.txt");
+        CarTxtConvertor carConvertor = new CarTxtConvertor(carInFile);
+
+//        List<String> carLines = txtReader.readLines(carInFile);
+//        CarTxtConvertor carConvertor2 = new CarTxtConvertor(carInFile);
+//
+//        CarRepositoryImpl<Car> carRepoIO = new CarRepositoryImpl<>();
+//        int i = 0;
+//        for (String line : carLines) {
+//            i++;
+//            Car carIO = null;
+//            try {
+//                carIO = carConvertor2.convert(line);
+//                carRepoIO.add(carIO);
+//            } catch (InvalidEntityException e) {
+//                System.out.println("invalid carIO for: [" + line + "] at line: " + i);
+//            }
+//
+//        }
+
+        CarSearchServiceImpl searchServiceIO = new CarSearchServiceImpl(carConvertor.carsFromConvert());
+        searchServiceIO.printThis();
+        List<Car> foundCarsByMakerIO = searchServiceIO.findCarsByMaker("SkOda");
+
+        System.out.println("Search resutls by maker and model:");
+        for (Car car : foundCarsByMakerIO) {
+            System.out.println((car.getCarMaker() + " " + car.getCarModel()));
         }
+
         System.out.println("-----------------------------------------------------");
 
         //Testing Customer Reader + CustomerConverter------------------------------
+        //todo same as for car?
 
         File customerFile = new File("customersIn.txt");
-
         List<String> customerLines = txtReader.readLines(customerFile);
         CustomerTxtConvertor customerConvertor = new CustomerTxtConvertor();
+        CustomerRepositoryImpl<Customer> customerRepoIO = new CustomerRepositoryImpl<>();
 
-        for (String line: customerLines){
-            i++;
-            Customer customer = null;
+        int j = 0;
+        for (String line : customerLines) {
+            j++;
+            Customer customer1;
             try {
-               customer =  customerConvertor.convert(line);
-            }catch (InvalidEntityException e){
-                System.out.println("invalid customer for: [" + line + "] at line: " + i);
+                customer1 = customerConvertor.convert(line);
+                customerRepoIO.add(customer1);
+            } catch (InvalidEntityException e) {
+                System.out.println("invalid customer for: [" + line + "] at line: " + j);
             }
         }
 
-        //Car writer-----------------------------
+        CustomerServiceImpl searchCustomerIO = new CustomerServiceImpl(customerRepoIO);
+        searchCustomerIO.printThis();
+        List<Customer> foundCustomersByFirstNameIO = searchCustomerIO.findCustomerByFirstName("Omar Aziz");
+        System.out.println("Found customers with this first name: ");
+        for (Customer customer: foundCustomersByFirstNameIO){
+            System.out.println(customer.getCustomerFirstName()+ " " + customer.getCustomerLastName());
+        }
 
+        //Car writer-----------------------------
         File carOutFile = new File("carsOut.txt");
         CarTxtWriter<Car> carTxtWriter = new CarTxtWriter<>();
-        carTxtWriter.writeObj(carRepo1.getAll(),carOutFile);
+        carTxtWriter.writeObj(carRepo1.getAll(), carOutFile);
 
         //Customer writer------------------------
-
-        File customerOutFile = new File("customersOut.txt");
         CustomerTxtWriter<Customer> customerTxtWriter = new CustomerTxtWriter<>();
-        customerTxtWriter.writeObj(customerRepository.getAll(),customerOutFile);
+        customerTxtWriter.writeObj(customerRepository.getAll(),new File("customersOut.txt"));
 
     }
     //End psvm
+
 
 
 }

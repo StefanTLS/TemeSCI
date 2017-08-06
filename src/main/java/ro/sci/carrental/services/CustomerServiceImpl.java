@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService<Customer>{
      * @return
      */
     @Override
-    public List<?extends Customer> findCustomerByFirstName(String firstName) {
+    public List<Customer> findCustomerByFirstName(String firstName) {
         List<Customer> foundCustomers = new ArrayList<>();
         for (Customer customer: customerRepository.getAll()){
             if(customer.getCustomerFirstName().equals(firstName)){
@@ -52,7 +52,8 @@ public class CustomerServiceImpl implements CustomerService<Customer>{
         }
         return foundCustomers;
     }
-    //Customer
-    public CustomerServiceImpl() {
+    public void printThis(){
+        System.out.println(customerRepository.getAll());
     }
+
 }

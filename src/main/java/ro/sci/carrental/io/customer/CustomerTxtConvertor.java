@@ -28,11 +28,11 @@ public class CustomerTxtConvertor implements Convertor<Customer> {
         Customer customer = new Customer();
 
 
-        customer.setCustomerFirstName(tokens[0]);
-        customer.setCustomerLastName(tokens[1]);
+        customer.setCustomerFirstName(tokens[0].trim());
+        customer.setCustomerLastName(tokens[1].trim());
         customer.setCustomerAge(Integer.parseInt(tokens[2].replaceAll("[^0-9]", "")));
-        customer.setCustomerTelephoneNumber(tokens[3]);
-        customer.setCustomerAdress(new CustomerAdress(tokens[4], tokens[5],tokens[6],tokens[7],tokens[8]));
+        customer.setCustomerTelephoneNumber(tokens[3].replaceAll("\\s+",""));
+        customer.setCustomerAdress(new CustomerAdress(tokens[4].trim(), tokens[5].trim(),tokens[6].trim(),tokens[7].trim(),tokens[8].trim()));
 
         LOGGER.log(Level.INFO,"Customer in this list: " + customer);
         return customer;
